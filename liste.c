@@ -154,6 +154,7 @@ void	sw_a(d_list **start)
 	head->next = next;
 	next->next = temp;
 	*start = head;
+	write(1, "sa\n", 3);
 }
 
 void	push_b(d_list **stack_a, d_list **stack_b)
@@ -164,6 +165,8 @@ void	push_b(d_list **stack_a, d_list **stack_b)
 	addtop(stack_b, (*stack_a)->val);
 	*stack_a = temp1->next;
 	free(temp1);
+	write(1, "pb\n", 3);
+
 }
 
 d_list *lst_last(d_list *start)
@@ -187,6 +190,7 @@ void	rot_a(d_list **stack_a)
 	last->next = head;
 	head->next = NULL;
 	*stack_a = new_head;
+	write(1, "ra\n", 3);
 }
 
 void	rr_a(d_list **stack_a)
@@ -203,9 +207,9 @@ void	rr_a(d_list **stack_a)
 	while (new_last->next->next != NULL)
 		new_last = new_last->next;
 	last->next = head;
-	
 	new_last->next = NULL;
 	*stack_a = last;
+	write(1, "rra\n", 4);
 }
 
 int medium_val(d_list *list)
