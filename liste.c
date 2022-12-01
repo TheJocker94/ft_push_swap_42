@@ -70,7 +70,6 @@ void	reverse_list(d_list **stnode)
 			curr = *stnode;
 		}
 		*stnode = prev; //convert the last node as head
-		
 	}
 }
 
@@ -127,14 +126,14 @@ d_list	*create_list(int ac, char **av)
 	while (i < ac)
 	{
 		next = create_node(atoi(av[i]));
-		if (start == NULL)//first node is equal to start
+		if (start == NULL) //first node is equal to start
 			start = next;
 		if (tmp != NULL)
 			tmp->next = next;
 		tmp = next;
 		i++;
 	}
-	return(start);
+	return (start);
 }
 
 void	sw_a(d_list **start)
@@ -159,31 +158,30 @@ void	sw_a(d_list **start)
 
 void	push_b(d_list **stack_a, d_list **stack_b)
 {
-	d_list *temp1;
+	d_list	*temp1;
 
 	temp1 = *stack_a;
 	addtop(stack_b, (*stack_a)->val);
 	*stack_a = temp1->next;
 	free(temp1);
 	write(1, "pb\n", 3);
-
 }
 
-d_list *lst_last(d_list *start)
+d_list	*lst_last(d_list *start)
 {
 	while (start->next != NULL)
 		start = start->next;
-	return start;
+	return (start);
 }
 
 void	rot_a(d_list **stack_a)
 {
-	d_list *last;
-	d_list *head;
-	d_list *new_head;
+	d_list	*last;
+	d_list	*head;
+	d_list	*new_head;
 
 	if ((*stack_a)->next == NULL)
-		return;
+		return ;
 	head = *stack_a;
 	new_head = (*stack_a)->next;
 	last = lst_last(*stack_a);
@@ -195,12 +193,12 @@ void	rot_a(d_list **stack_a)
 
 void	rr_a(d_list **stack_a)
 {
-	d_list *last;
-	d_list *head;
-	d_list *new_last;
+	d_list	*last;
+	d_list	*head;
+	d_list	*new_last;
 
 	if ((*stack_a)->next == NULL || *stack_a == NULL)
-		return;
+		return ;
 	head = *stack_a;
 	new_last = head;
 	last = lst_last(*stack_a);
@@ -212,15 +210,17 @@ void	rr_a(d_list **stack_a)
 	write(1, "rra\n", 4);
 }
 
-int medium_val(d_list *list)
+int	medium_val(d_list *list)
 {
-	int medium;
-	int size = lst_size(list);
+	int	medium;
+	int	size;
+
+	size = lst_size(list);
 	medium = 0;
 	while (list)
 	{
 		medium += list->val;
-		list = list->next; 
+		list = list->next;
 	}
 	medium /= size;
 	return (medium);

@@ -14,7 +14,7 @@
 
 long	ft_atol(char *str)
 {
-	int	sign;
+	int		sign;
 	long	nmb;
 
 	sign = 1;
@@ -35,6 +35,7 @@ long	ft_atol(char *str)
 	}
 	return (nmb *= sign);
 }
+
 int	ft_strdigit(char *str)
 {
 	int	i;
@@ -59,6 +60,22 @@ int	is_int(char *str)
 	return (1);
 }
 
+int	check_double(int i, int j, int ac, char **av)
+{
+	while (i < ac)
+	{
+		while (j < ac)
+		{
+			if (ft_strncmp(av[i], av[j], 20) == 0)
+				return (1);
+			j++;
+		}
+		i++;
+		j = i + 1;
+	}
+	return (0);
+}
+
 int	check_args(int ac, char **av)
 {
 	int	i;
@@ -66,21 +83,18 @@ int	check_args(int ac, char **av)
 
 	i = 1;
 	j = 2;
-	while (i < ac)
+	while (1)
 	{
-		while (j < ac)
-		{
-			if (ft_strncmp(av[i],av[j], 20) == 0)
-				return (1);
-			j++;
-		}
-		i++;
-		j = i + 1;
+		if (check_double(i, j, ac, av) == 1)
+			return (1);
+		else if (check_double(i, j, ac, av) == 0)
+			break ;
 	}
 	i = 1;
 	while (i < ac)
 	{
-		if ((av[i][0] != '-' && av[i][0] != '+') && (av[i][0] < '0' || av[i][0] > '9'))
+		if ((av[i][0] != '-' && av[i][0] != '+') && (av[i][0] < '0'
+				|| av[i][0] > '9'))
 			return (1);
 		else if (!ft_strdigit(av[i]))
 			return (1);

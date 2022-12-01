@@ -36,6 +36,7 @@ int medium_val(d_list *list);
 long	ft_atol(char *str);
 int	ft_strdigit(char *str);
 int	is_int(char *str);
+int	check_double(int i, int j, int ac, char **av);
 int	check_args(int ac, char **av);
 void	ft_sort_2(d_list **a);
 void	ft_sort_3(d_list **a);

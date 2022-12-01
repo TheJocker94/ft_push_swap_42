@@ -9,6 +9,7 @@
 /*   Updated: 2022/12/01 20:54:23 by ocastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "lib/push_swap.h"
 
 int	main(int ac, char **av)
@@ -37,13 +38,12 @@ int	main(int ac, char **av)
 		ft_sort_3(&stack_a);
 	/*stack_a = push_b(stack_a, stack_b);
 	display_list(stack_a);
-	display_list(stack_b);*/
-	//rot_a(&stack_a);
-	//rr_a(&stack_a);
-	//printf("%d\n", medium_val(stack_a));
+	display_list(stack_b);
+	rot_a(&stack_a);
+	rr_a(&stack_a);
+	printf("%d\n", medium_val(stack_a));*/
 	display_list(stack_a);
 	//display_list(stack_b);
-
 	release(stack_a);
 	release(stack_b);
 }
