@@ -29,6 +29,7 @@ int	lst_size(d_list *start);
 d_list	*create_list(int ac, char **av);
 void	sw_a(d_list **start);
 void	push_b(d_list **stack_a, d_list **stack_b);
+void	push_a(d_list **stack_a, d_list **stack_b);
 d_list *lst_last(d_list *start);
 void	rot_a(d_list **stack_a);
 void	rr_a(d_list **stack_a);
@@ -41,6 +42,10 @@ int	check_args(int ac, char **av);
 void	ft_sort_2(d_list **a);
 void	ft_sort_3(d_list **a);
 void first_sort_3_if(d_list *beholder, d_list *beholder2, d_list *beholder3, d_list **a);
+void	ft_sort_5(d_list **a, d_list **b, int ac);
+int	is_min(d_list *a);
+int	find_min_pos(d_list *a);
+void	push_min(d_list **a, d_list **b);
 
 
 

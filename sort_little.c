@@ -58,3 +58,20 @@ void	ft_sort_3(d_list **a)
 	}
 }
 
+void	ft_sort_5(d_list **a, d_list **b, int ac)
+{
+	if (ac == 5)
+	{
+		push_min(a, b);
+		ft_sort_3(a);
+		push_a(a, b);
+	}
+	else if (ac == 6)
+	{
+		push_min(a, b);
+		push_min(a, b);
+		ft_sort_3(a);
+		push_a(a, b);
+		push_a(a, b);
+	}
+}

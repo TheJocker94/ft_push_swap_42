@@ -167,6 +167,17 @@ void	push_b(d_list **stack_a, d_list **stack_b)
 	write(1, "pb\n", 3);
 }
 
+void	push_a(d_list **stack_a, d_list **stack_b)
+{
+	d_list	*temp1;
+
+	temp1 = *stack_b;
+	addtop(stack_a, (*stack_b)->val);
+	*stack_b = temp1->next;
+	free(temp1);
+	write(1, "pa\n", 3);
+}
+
 d_list	*lst_last(d_list *start)
 {
 	while (start->next != NULL)
