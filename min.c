@@ -46,15 +46,15 @@ void	push_min(d_list **a, d_list **b)
 
 	pos_min = find_min_pos(*a);
 	list_size = lst_size(*a);
-	if (pos_min >= list_size/2)
+	if ((float)pos_min >= (float)list_size/2)
 	{
-		while (pos_min <= (list_size))
+		while ((float)pos_min <= (float)(list_size))
 		{
 			rr_a(a);
 			pos_min++;
 		}
 	}
-	else if (pos_min < list_size/2)
+	else if ((float)pos_min < (float)list_size/2)
 	{
 		while (i != pos_min)
 		{

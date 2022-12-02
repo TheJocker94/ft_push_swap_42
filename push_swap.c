@@ -15,14 +15,15 @@
 int	main(int ac, char **av)
 {
 	int		i;
-	//int min;
+	int size;
 	d_list	*stack_a;
 	d_list	*stack_b;
 
+	size = ac - 1;
 	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
-	if (ac < 2)
+	if (size < 1)
 		return (0);
 	if (check_args(ac, av))
 	{
@@ -33,14 +34,12 @@ int	main(int ac, char **av)
 	i = lst_size(stack_a);
 	printf("List size : %d\n", i);
 	display_list(stack_a);
-	//if (ac == 3)
+	//if (ac <= 5)
 	//	ft_sort_2(&stack_a);
 	//if (ac == 4)
 		//ft_sort_3(&stack_a);
-	if (ac == 6)
-	{
-		ft_sort_5(&stack_a, &stack_b, ac);
-	}
+	if (size <= 5)
+		ft_sort_5(&stack_a, &stack_b, size);
 	/*stack_a = push_b(stack_a, stack_b);
 	display_list(stack_a);
 	display_list(stack_b);
