@@ -37,6 +37,33 @@ int	find_min_pos(d_list *a)
 	i++;
 	return (i);
 }
+/*
+void	push_min(d_list **a, d_list **b)
+{
+	int pos_min;
+	int list_size;
+	int i = 1;
+
+	pos_min = find_min_pos(*a);
+	list_size = lst_size(*a);
+	if ((float)pos_min > (float)list_size/2)
+	{
+		while ((float)pos_min <= (float)(list_size))
+		{
+			rr_a(a);
+			pos_min++;
+		}
+	}
+	else if ((float)pos_min <= (float)list_size/2)
+	{
+		while (i != pos_min)
+		{
+			rot_a(a);
+			i++;
+		}
+	}
+	push_b(a, b);
+}*/
 
 void	push_min(d_list **a, d_list **b)
 {
@@ -46,20 +73,22 @@ void	push_min(d_list **a, d_list **b)
 
 	pos_min = find_min_pos(*a);
 	list_size = lst_size(*a);
-	if ((float)pos_min >= (float)list_size/2)
-	{
-		while ((float)pos_min <= (float)(list_size))
-		{
-			rr_a(a);
-			pos_min++;
-		}
-	}
-	else if ((float)pos_min < (float)list_size/2)
+	
+
+	if ((float)pos_min <= (float)(list_size/2 + 1))
 	{
 		while (i != pos_min)
 		{
 			rot_a(a);
 			i++;
+		}
+	}
+	else if ((float)pos_min > (float)(list_size/2 ))
+	{
+		while ((float)pos_min <= (float)(list_size))
+		{
+			rr_a(a);
+			pos_min++;
 		}
 	}
 	push_b(a, b);

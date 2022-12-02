@@ -90,7 +90,7 @@ void	ft_sort_5(d_list **a, d_list **b, int size)
 		ft_sort_2(a);
 	else if (size == 3)
 		ft_sort_3(a);
-	if (check_order_little(a, size) == 1)
+	if (check_order_little(a, size))
 		return ;
 	if (size == 4)
 	{
