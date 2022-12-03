@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include "lib/push_swap.h"
+#include <string.h>
 
 int	main(int ac, char **av)
 {
 	int size;
 	d_list	*stack_a;
 	d_list	*stack_b;
-
+	int	i = 5;
 	size = ac - 1;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -29,21 +30,32 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	stack_a = create_list(ac, av);
-	printf("List size : %d\n", lst_size(stack_a));
+	/*printf("List size : %d\n", lst_size(stack_a));
 	display_list(stack_a);
-	//if (size <= 5)
-	//	ft_sort_5(&stack_a, &stack_b, size);
+	printf("Min is : %d\n", is_min(stack_a));
+	printf("Max is : %d\n", is_max(stack_a));
+	printf("Min position is :%d\n", find_min_pos(stack_a));*/
+	if (size <= 5)
+		ft_sort_5(&stack_a, &stack_b, size);
+	while (size > 5 && size <= 9)
+	{
+		while (size - i !=  5)
+		{
+			push_min(&stack_a, &stack_b);
+			i++;
+		}
+
+		ft_sort_5(&stack_a, &stack_b, size);
+	}
 	/*push_b(stack_a, stack_b);
 	display_list(stack_a);
 	display_list(stack_b);
 	rot_a(&stack_a);
 	rr_a(&stack_a);
 	printf("%d\n", medium_val(stack_a));*/
-	printf("Min is : %d\n", is_min(stack_a));
-	printf("Min position is :%d\n", find_min_pos(stack_a));
-	push_min(&stack_a, &stack_b);
-	display_list(stack_a);
-	display_list(stack_b);
-	release(stack_a);
-	release(stack_b);
+	//push_min(&stack_a, &stack_b);
+	//display_list(stack_a);
+	//display_list(stack_b);
+	//release(stack_a);
+	//release(stack_b);
 }

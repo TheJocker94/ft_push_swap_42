@@ -20,6 +20,26 @@ int	is_min(d_list *a)
 	return(min);
 }
 
+int	is_max(d_list *a)
+{
+	int max;
+	d_list *node = a;
+	d_list *temp = node->next;
+	
+	while (temp)
+	{
+		while((temp) && (node->val > temp->val))
+			temp = temp->next;
+		if (temp != NULL)
+		{
+			node = temp;
+			temp = temp->next;
+		}
+	}
+	max = node->val;
+	return(max);
+}
+
 int	find_min_pos(d_list *a)
 {
 	int i;

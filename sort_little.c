@@ -69,6 +69,8 @@ int	check_order_little(d_list **list, int size)
 	int	d;
 	int	e;
 
+	if (size < 4)
+		return (0);
 	a = (*list)->val;
 	b = (*list)->next->val;
 	c = (*list)->next->next->val;
@@ -88,9 +90,9 @@ void	ft_sort_5(d_list **a, d_list **b, int size)
 		return ;
 	if (size == 2)
 		ft_sort_2(a);
-	else if (size == 3)
+	if (size == 3)
 		ft_sort_3(a);
-	if (check_order_little(a, size))
+	if ((check_order_little(a, size)) && size >= 4)
 		return ;
 	if (size == 4)
 	{
@@ -98,7 +100,7 @@ void	ft_sort_5(d_list **a, d_list **b, int size)
 		ft_sort_3(a);
 		push_a(a, b);
 	}
-	else if (size == 5)
+	if (size == 5)
 	{
 		push_min(a, b);
 		push_min(a, b);

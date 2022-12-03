@@ -45,6 +45,7 @@ void	ft_sort_3(d_list **a);
 void first_sort_3_if(d_list *tmp, d_list *tmp2, d_list *tmp3, d_list **a);
 void	ft_sort_5(d_list **a, d_list **b, int size);
 int	is_min(d_list *a);
+int	is_max(d_list *a);
 int	find_min_pos(d_list *a);
 void	push_min(d_list **a, d_list **b);
 
