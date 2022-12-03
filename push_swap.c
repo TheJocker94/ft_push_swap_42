@@ -18,7 +18,7 @@ int	main(int ac, char **av)
 	int size;
 	d_list	*stack_a;
 	d_list	*stack_b;
-	int	i = 5;
+	int	i = 0;
 	size = ac - 1;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -37,15 +37,20 @@ int	main(int ac, char **av)
 	printf("Min position is :%d\n", find_min_pos(stack_a));*/
 	if (size <= 5)
 		ft_sort_5(&stack_a, &stack_b, size);
-	while (size > 5 && size <= 9)
+	while (size > 5)
 	{
-		while (size - i !=  5)
+		while ((size - i) > 5)
 		{
 			push_min(&stack_a, &stack_b);
 			i++;
 		}
-
-		ft_sort_5(&stack_a, &stack_b, size);
+		ft_sort_5(&stack_a, &stack_b, (size - i));
+		while (i--)
+		{
+			push_a(&stack_a, &stack_b);
+		}
+		
+		break;
 	}
 	/*push_b(stack_a, stack_b);
 	display_list(stack_a);
@@ -54,8 +59,8 @@ int	main(int ac, char **av)
 	rr_a(&stack_a);
 	printf("%d\n", medium_val(stack_a));*/
 	//push_min(&stack_a, &stack_b);
-	//display_list(stack_a);
-	//display_list(stack_b);
+	display_list(stack_a);
+	display_list(stack_b);
 	//release(stack_a);
 	//release(stack_b);
 }
