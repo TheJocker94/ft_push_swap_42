@@ -16,6 +16,7 @@
 typedef struct d_list
 {
 	int				val;
+	int				group;
 	struct d_list	*next;
 }					d_list;
 
@@ -47,8 +48,10 @@ void	ft_sort_5(d_list **a, d_list **b, int size);
 int	is_min(d_list *a);
 int	is_max(d_list *a);
 int	find_min_pos(d_list *a);
+void is_group(d_list *a, int min, int max);
 void	push_min(d_list **a, d_list **b);
-
-
+int find_inter(d_list *a);
+int pos_group_top(d_list *a, int id);
+int pos_group_bot(d_list *a, int id);
 
 #endif
