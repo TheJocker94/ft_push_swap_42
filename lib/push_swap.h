@@ -48,10 +48,13 @@ void	ft_sort_5(d_list **a, d_list **b, int size);
 int	is_min(d_list *a);
 int	is_max(d_list *a);
 int	find_min_pos(d_list *a);
-void is_group(d_list *a, int min, int max);
+int is_group(d_list *a, int min, int max, int id);
 void	push_min(d_list **a, d_list **b);
 int find_inter(d_list *a);
 int pos_group_top(d_list *a, int id);
 int pos_group_bot(d_list *a, int id);
+void push_top(d_list **a, d_list **b, int pos);
+void push_bot(d_list **a, d_list **b, int pos, int list_size);
+void	push_group(d_list **a, d_list **b, int id);
 
 #endif

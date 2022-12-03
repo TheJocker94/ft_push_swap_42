@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	d_list	*stack_b;
 	//int min;
 	//int max;
-
+	int	id = 1;
 	//int	i = 0;
 	size = ac - 1;
 	stack_a = NULL;
@@ -35,9 +35,9 @@ int	main(int ac, char **av)
 	stack_a = create_list(ac, av);
 	printf("List size : %d\n", lst_size(stack_a));
 	display_list(stack_a);
-	printf("Min is : %d\n", is_min(stack_a));
-	printf("Max is : %d\n", is_max(stack_a));
-	printf("Min position is :%d\n", find_min_pos(stack_a));
+	//printf("Min is : %d\n", is_min(stack_a));
+	//printf("Max is : %d\n", is_max(stack_a));
+	//printf("Min position is :%d\n", find_min_pos(stack_a));
 	//if (size <= 5)
 	//	ft_sort_5(&stack_a, &stack_b, size);
 	//while (size > 5 && size <= 9)
@@ -65,13 +65,23 @@ int	main(int ac, char **av)
 		}
 		
 		5break;	}*/
-	while (size >5 && size <= 100)
+	float max = is_max(stack_a);
+	float min = is_min(stack_a);
+	float inter = (max - min)/5;
+	float i = 0;
+
+	while (size > 5 && size <= 100)
 	{
-		is_group(stack_a, 0, 20);
-		printf("top is :%d\n", pos_group_top(stack_a, 1));
-		printf("bot is :%d\n", pos_group_bot(stack_a, 1));
-		break;
+
+		while(is_group(stack_a, min, min + inter, id))
+			push_group(&stack_a, &stack_b, id);
+		id++;
+		min += inter + 1;
+		i++;
+		if (i == 5)
+			break;
 	}
+
 	
 	/*push_b(stack_a, stack_b);
 	display_list(stack_a);
