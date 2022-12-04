@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	//int min;
 	//int max;
 	int	id = 1;
+	int j = 0;
 	//int	i = 0;
 	size = ac - 1;
 	stack_a = NULL;
@@ -33,8 +34,8 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	stack_a = create_list(ac, av);
-	printf("List size : %d\n", lst_size(stack_a));
-	display_list(stack_a);
+	//printf("List size : %d\n", lst_size(stack_a));
+	//display_list(stack_a);
 	//printf("Min is : %d\n", is_min(stack_a));
 	//printf("Max is : %d\n", is_max(stack_a));
 	//printf("Min position is :%d\n", find_min_pos(stack_a));
@@ -81,7 +82,26 @@ int	main(int ac, char **av)
 		if (i == 5)
 			break;
 	}
+	inter = (max - min)/11;
+	i = 0;
+	while (size > 100 && size <= 500)
+	{
 
+		while(is_group(stack_a, min, min + inter, id))
+			push_group(&stack_a, &stack_b, id);
+		id++;
+		min += inter + 1;
+		i++;
+		if (i == 11)
+			break;
+	}
+	while (stack_b)
+	{
+		j = find_max_pos(stack_b);
+		push_max(&stack_a, &stack_b, j);		
+		if (stack_b == NULL)
+			break;
+	}
 	
 	/*push_b(stack_a, stack_b);
 	display_list(stack_a);
@@ -90,8 +110,11 @@ int	main(int ac, char **av)
 	rr_a(&stack_a);
 	printf("%d\n", medium_val(stack_a));*/
 	//push_min(&stack_a, &stack_b);
-	display_list(stack_a);
-	display_list(stack_b);
-	//release(stack_a);
-	//release(stack_b);
+	//write(1, "A:\n", 3);
+	//display_list(stack_a);
+	//write(1, "B:\n", 3);
+	//display_list(stack_b);
+	//printf("Max b is %d\n", j);
+	release(stack_a);
+	release(stack_b);
 }

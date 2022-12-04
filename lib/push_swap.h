@@ -34,6 +34,8 @@ void	push_a(d_list **stack_a, d_list **stack_b);
 d_list *lst_last(d_list *start);
 void	rot_a(d_list **stack_a);
 void	rr_a(d_list **stack_a);
+void	rot_b(d_list **stack_a);
+void	rr_b(d_list **stack_a);
 int medium_val(d_list *list);
 long	ft_atol(char *str);
 int	ft_strdigit(char *str);
@@ -56,5 +58,7 @@ int pos_group_bot(d_list *a, int id);
 void push_top(d_list **a, d_list **b, int pos);
 void push_bot(d_list **a, d_list **b, int pos, int list_size);
 void	push_group(d_list **a, d_list **b, int id);
+int	find_max_pos(d_list *a);
+void	push_max(d_list **a, d_list **b, int max);
 
 #endif

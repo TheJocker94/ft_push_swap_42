@@ -40,6 +40,24 @@ int	is_max(d_list *a)
 	return(max);
 }
 
+int	find_max_pos(d_list *a)
+{
+	int i;
+	d_list *last;
+	
+	last = lst_last(a);
+	i = 0;
+	if (last->val == is_max(a))
+		return (lst_size(a));
+	while ((a->val != is_max(a)) && (a != NULL))
+	{
+		a = a->next;
+		i++;
+	}
+	i++;
+	return (i);
+}
+
 int	find_min_pos(d_list *a)
 {
 	int i;
@@ -85,4 +103,30 @@ void	push_min(d_list **a, d_list **b)
 		}
 	}
 	push_b(a, b);
+}
+void	push_max(d_list **a, d_list **b, int max)
+{
+	int list_size;
+	int i = 1;
+
+	list_size = lst_size(*b);
+	
+
+	if ((float)max <= (float)(list_size/2 + 1))
+	{
+		while (i != max)
+		{
+			rot_b(b);
+			i++;
+		}
+	}
+	else if ((float)max > (float)(list_size/2 ))
+	{
+		while ((float)max <= (float)(list_size))
+		{
+			rr_b(b);
+			max++;
+		}
+	}
+	push_a(a, b);
 }

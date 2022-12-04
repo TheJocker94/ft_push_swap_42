@@ -202,6 +202,23 @@ void	rot_a(d_list **stack_a)
 	write(1, "ra\n", 3);
 }
 
+void	rot_b(d_list **stack_a)
+{
+	d_list	*last;
+	d_list	*head;
+	d_list	*new_head;
+
+	if ((*stack_a)->next == NULL)
+		return ;
+	head = *stack_a;
+	new_head = (*stack_a)->next;
+	last = lst_last(*stack_a);
+	last->next = head;
+	head->next = NULL;
+	*stack_a = new_head;
+	write(1, "rb\n", 3);
+}
+
 void	rr_a(d_list **stack_a)
 {
 	d_list	*last;
@@ -219,6 +236,25 @@ void	rr_a(d_list **stack_a)
 	new_last->next = NULL;
 	*stack_a = last;
 	write(1, "rra\n", 4);
+}
+
+void	rr_b(d_list **stack_a)
+{
+	d_list	*last;
+	d_list	*head;
+	d_list	*new_last;
+
+	if ((*stack_a)->next == NULL || *stack_a == NULL)
+		return ;
+	head = *stack_a;
+	new_last = head;
+	last = lst_last(*stack_a);
+	while (new_last->next->next != NULL)
+		new_last = new_last->next;
+	last->next = head;
+	new_last->next = NULL;
+	*stack_a = last;
+	write(1, "rrb\n", 4);
 }
 
 int	medium_val(d_list *list)
