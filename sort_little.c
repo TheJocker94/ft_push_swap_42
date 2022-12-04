@@ -12,10 +12,10 @@
 
 #include "lib/push_swap.h"
 
-void	ft_sort_2(d_list **a)
+void	ft_sort_2(t_stack **a)
 {
-	d_list	*beholder;
-	d_list	*beholder2;
+	t_stack	*beholder;
+	t_stack	*beholder2;
 
 	beholder = *a;
 	beholder2 = beholder->next;
@@ -23,7 +23,7 @@ void	ft_sort_2(d_list **a)
 		sw_a(a);
 }
 
-void	first_sort_3_if(d_list *tmp, d_list *tmp2, d_list *tmp3, d_list **a)
+void	first_sort_3_if(t_stack *tmp, t_stack *tmp2, t_stack *tmp3, t_stack **a)
 {
 	if (tmp2->val < tmp3->val)
 		return ;
@@ -36,11 +36,11 @@ void	first_sort_3_if(d_list *tmp, d_list *tmp2, d_list *tmp3, d_list **a)
 	}
 }
 
-void	ft_sort_3(d_list **a)
+void	ft_sort_3(t_stack **a)
 {
-	d_list	*tmp;
-	d_list	*tmp2;
-	d_list	*tmp3;
+	t_stack	*tmp;
+	t_stack	*tmp2;
+	t_stack	*tmp3;
 
 	tmp = *a;
 	tmp2 = tmp->next;
@@ -61,7 +61,7 @@ void	ft_sort_3(d_list **a)
 	}
 }
 
-int	check_order_little(d_list **list, int size)
+int	check_order_little(t_stack **list, int size)
 {
 	int	a;
 	int	b;
@@ -84,7 +84,7 @@ int	check_order_little(d_list **list, int size)
 	return (0);
 }
 
-void	ft_sort_5(d_list **a, d_list **b, int size)
+void	ft_sort_5(t_stack **a, t_stack **b, int size)
 {
 	if (size == 1)
 		return ;

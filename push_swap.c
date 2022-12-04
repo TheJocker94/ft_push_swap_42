@@ -11,27 +11,24 @@
 /* ************************************************************************** */
 
 #include "lib/push_swap.h"
-#include <string.h>
 
 int	main(int ac, char **av)
 {
-	int size;
-	d_list	*stack_a;
-	d_list	*stack_b;
-	//int min;
-	//int max;
-	int	id = 1;
-	int j = 0;
-	//int	i = 0;
+	int		size;
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		id;
+
+	id = 1;
 	size = ac - 1;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (size < 1)
-		return (0);
+		exit (0);
 	if (check_args(ac, av))
 	{
 		write(2, "Error\n", 6);
-		return (1);
+		exit (0);
 	}
 	stack_a = create_list(ac, av);
 	//printf("List size : %d\n", lst_size(stack_a));
@@ -39,72 +36,18 @@ int	main(int ac, char **av)
 	//printf("Min is : %d\n", is_min(stack_a));
 	//printf("Max is : %d\n", is_max(stack_a));
 	//printf("Min position is :%d\n", find_min_pos(stack_a));
-	//if (size <= 5)
-	//	ft_sort_5(&stack_a, &stack_b, size);
-	//while (size > 5 && size <= 9)
-	//{
-		/*if (size == 6)
-		{
-			push_min(&stack_a, &stack_b);
-			push_min(&stack_a, &stack_b);
-			push_min(&stack_a, &stack_b);
-			ft_sort_3(&stack_a);
-			push_a(&stack_a, &stack_b);
-			push_a(&stack_a, &stack_b);
-			push_a(&stack_a, &stack_b);
-			break;
-		}*/
-		/*while ((size - i) > 5)
-		{
-			push_min(&stack_a, &stack_b);
-			i++;
-		}
-		ft_sort_5(&stack_a, &stack_b, (size - i));
-		while (i--)
-		{
-			push_a(&stack_a, &stack_b);
-		}
-		
-		5break;	}*/
-	float max = is_max(stack_a);
-	float min = is_min(stack_a);
-	float inter = (max - min)/5;
-	float i = 0;
-
-	while (size > 5 && size <= 100)
-	{
-
-		while(is_group(stack_a, min, min + inter, id))
-			push_group(&stack_a, &stack_b, id);
-		id++;
-		min += inter + 1;
-		i++;
-		if (i == 5)
-			break;
-	}
-	inter = (max - min)/11;
-	i = 0;
-	while (size > 100 && size <= 500)
-	{
-
-		while(is_group(stack_a, min, min + inter, id))
-			push_group(&stack_a, &stack_b, id);
-		id++;
-		min += inter + 1;
-		i++;
-		if (i == 11)
-			break;
-	}
-	while (stack_b)
-	{
-		j = find_max_pos(stack_b);
-		push_max(&stack_a, &stack_b, j);		
-		if (stack_b == NULL)
-			break;
-	}
-	
-	/*push_b(stack_a, stack_b);
-	display_list(stack_a);
+	//if (is_ordered(stack_a))
+	//	return (0);
+	if (size <= 5)
+		ft_sort_5(&stack_a, &stack_b, size);
+	if (size > 5)
+		sort_big(&stack_a, &stack_b, size, id);
+	//int min;
+	//printf("Min pos is : %d\n", min = find_min_pos(stack_a));
+	//push_ordered(&stack_a, min);
+	//display_list(stack_a);
+	//display_list(stack_b);
+	/*display_list(stack_a);
 	display_list(stack_b);
 	rot_a(&stack_a);
 	rr_a(&stack_a);

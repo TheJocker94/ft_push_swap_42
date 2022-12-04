@@ -1,6 +1,6 @@
 CC = gcc
 
-NAME = libpushswap.a
+NAME = push_swap
 
 SRC := $(wildcard *.c */*.c)
 

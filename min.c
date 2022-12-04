@@ -1,14 +1,16 @@
 #include "lib/push_swap.h"
 
-int	is_min(d_list *a)
+int	is_min(t_stack *a)
 {
-	int min;
-	d_list *node = a;
-	d_list *temp = node->next;
-	
+	int		min;
+	t_stack	*node;
+	t_stack	*temp;
+
+	node = a;
+	temp = node->next;
 	while (temp)
 	{
-		while((temp) && (node->val < temp->val))
+		while ((temp) && (node->val < temp->val))
 			temp = temp->next;
 		if (temp != NULL)
 		{
@@ -17,54 +19,18 @@ int	is_min(d_list *a)
 		}
 	}
 	min = node->val;
-	return(min);
+	return (min);
 }
 
-int	is_max(d_list *a)
+int	find_min_pos(t_stack *a)
 {
-	int max;
-	d_list *node = a;
-	d_list *temp = node->next;
-	
-	while (temp)
-	{
-		while((temp) && (node->val > temp->val))
-			temp = temp->next;
-		if (temp != NULL)
-		{
-			node = temp;
-			temp = temp->next;
-		}
-	}
-	max = node->val;
-	return(max);
-}
+	int		i;
+	t_stack	*last;
 
-int	find_max_pos(d_list *a)
-{
-	int i;
-	d_list *last;
-	
 	last = lst_last(a);
 	i = 0;
-	if (last->val == is_max(a))
-		return (lst_size(a));
-	while ((a->val != is_max(a)) && (a != NULL))
-	{
-		a = a->next;
-		i++;
-	}
-	i++;
-	return (i);
-}
-
-int	find_min_pos(d_list *a)
-{
-	int i;
-	d_list *last;
-	
-	last = lst_last(a);
-	i = 0;
+	if (last == NULL)
+		return (0);
 	if (last->val == is_min(a))
 		return (lst_size(a));
 	while ((a->val != is_min(a)) && (a != NULL))
@@ -76,17 +42,16 @@ int	find_min_pos(d_list *a)
 	return (i);
 }
 
-void	push_min(d_list **a, d_list **b)
+void	push_min(t_stack **a, t_stack **b)
 {
-	int pos_min;
-	int list_size;
-	int i = 1;
+	int	pos_min;
+	int	list_size;
+	int	i;
 
+	i = 1;
 	pos_min = find_min_pos(*a);
 	list_size = lst_size(*a);
-	
-
-	if ((float)pos_min <= (float)(list_size/2 + 1))
+	if ((float)pos_min <= (float)(list_size / 2 + 1))
 	{
 		while (i != pos_min)
 		{
@@ -94,7 +59,7 @@ void	push_min(d_list **a, d_list **b)
 			i++;
 		}
 	}
-	else if ((float)pos_min > (float)(list_size/2 ))
+	else if ((float)pos_min > (float)(list_size / 2))
 	{
 		while ((float)pos_min <= (float)(list_size))
 		{
@@ -103,30 +68,4 @@ void	push_min(d_list **a, d_list **b)
 		}
 	}
 	push_b(a, b);
-}
-void	push_max(d_list **a, d_list **b, int max)
-{
-	int list_size;
-	int i = 1;
-
-	list_size = lst_size(*b);
-	
-
-	if ((float)max <= (float)(list_size/2 + 1))
-	{
-		while (i != max)
-		{
-			rot_b(b);
-			i++;
-		}
-	}
-	else if ((float)max > (float)(list_size/2 ))
-	{
-		while ((float)max <= (float)(list_size))
-		{
-			rr_b(b);
-			max++;
-		}
-	}
-	push_a(a, b);
 }

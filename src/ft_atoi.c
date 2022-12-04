@@ -28,6 +28,8 @@ int	ft_atoi(const char *nptr)
 	}
 	else if (nptr[i] == '+')
 		i++;
+	//if (nptr[i] == 0)
+	//	return (0);
 	while (nptr[i] >= 48 && nptr[i] <= 57)
 	{
 		sum *= 10;
