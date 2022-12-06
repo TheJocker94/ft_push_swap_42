@@ -15,7 +15,7 @@ void	sort_logic(t_stack ***stack_a, t_stack ***stack_b, int size, int id)
 	if (size > 100)
 		div = (size / 62.5) + 5;
 	inter = ((float)is_max(**stack_a) - min) / div;
-	while (size > 5)
+	while (size > div)
 	{
 		while (is_group(**stack_a, min, min + inter, id))
 			push_group(*stack_a, *stack_b, id);
