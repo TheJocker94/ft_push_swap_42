@@ -17,6 +17,7 @@ typedef struct t_stack
 {
 	int				val;
 	int				group;
+	int				order;
 	struct t_stack	*next;
 }					t_stack;
 /*Creation and manipulation list*/
@@ -68,7 +69,10 @@ int					find_max_pos(t_stack *a);
 void				push_max(t_stack **a, t_stack **b, int max);
 void				sort_big(t_stack **stack_a, t_stack **stack_b, int size,
 						int id);
-void push_ordered(t_stack **b, int min);
-//int	is_ordered(t_stack *a);
+void 				push_ordered(t_stack **b, int min);
+void				is_newmin(t_stack *a, int order, int group);
+int					is_ordered(t_stack *a);
+void				init_min(t_stack *a);
+void				groupon(t_stack **a, int size);
 
 #endif

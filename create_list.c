@@ -6,6 +6,8 @@ t_stack	*create_node(int val)
 
 	i = (t_stack *)malloc(sizeof(t_stack));
 	i->val = val;
+	i->group = 0;
+	i->order = 0;
 	i->next = NULL;
 	return (i);
 }

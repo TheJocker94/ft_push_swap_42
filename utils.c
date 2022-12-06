@@ -98,13 +98,13 @@ void push_ordered(t_stack **b, int min)
 	}
 }*/
 
-/*int	is_ordered(t_stack *a)
+int	is_ordered(t_stack *a)
 {
-	while(a != NULL)
+	while(a->next != NULL)
 	{
 		if (a->val > a->next->val)
 			return (0);
 		a = a->next;
 	}
 	return (1);
-}*/
+}
