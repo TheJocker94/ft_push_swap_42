@@ -12,12 +12,13 @@ t_stack	*create_node(int val)
 	return (i);
 }
 
-void	addtop(t_stack **start, int new)
+void	addtop(t_stack **start, int new, int group)
 {
 	t_stack	*head;
 
 	head = (t_stack *)malloc(sizeof(t_stack));
 	head->val = new;
+	head->group = group;
 	head->next = *start;
 	*start = head;
 }

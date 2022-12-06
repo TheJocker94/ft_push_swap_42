@@ -62,10 +62,10 @@ void	groupon(t_stack **a, int size)
 	order = 2;
 	group = 1;
 	i = 1;
-	div = 5;
+	div = 7;
 	init_min(*a);
 	if (size > 100)
-		div = (size / 62.5) + 5;
+		div = (size / 62.5) + 10;
 	g_size = size / div;
 	j = size % div;
 	if (j > 0)

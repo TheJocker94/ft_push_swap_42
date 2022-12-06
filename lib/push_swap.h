@@ -22,10 +22,11 @@ typedef struct t_stack
 }					t_stack;
 /*Creation and manipulation list*/
 void				display_list(t_stack *start);
+void				display_group(t_stack *start);
 t_stack				*create_node(int val);
 void				release(t_stack *start);
 void				reverse_list(t_stack **stnode);
-void				addtop(t_stack **start, int new);
+void				addtop(t_stack **start, int new, int group);
 void				addbot(t_stack **start, int new);
 int					lst_size(t_stack *start);
 t_stack				*create_list(int ac, char **av);
@@ -51,24 +52,22 @@ void				ft_sort_2(t_stack **a);
 void				ft_sort_3(t_stack **a);
 void				first_sort_3_if(t_stack *tmp, t_stack *tmp2, t_stack *tmp3,
 						t_stack **a);
-void				sort_logic(t_stack ***stack_a, t_stack ***stack_b, int size,
-						int id);
+void				sort_logic(t_stack ***stack_a, t_stack ***stack_b, int size);
 void				ft_sort_5(t_stack **a, t_stack **b, int size);
 int					is_min(t_stack *a);
 int					is_max(t_stack *a);
 int					find_min_pos(t_stack *a);
-int					is_group(t_stack *a, int min, int max, int id);
+int					is_group(t_stack *a,int id);
 void				push_min(t_stack **a, t_stack **b);
 int					find_inter(t_stack *a);
 int					pos_group_top(t_stack *a, int id);
 int					pos_group_bot(t_stack *a, int id);
-void				push_top(t_stack **a, t_stack **b, int pos);
-void				push_bot(t_stack **a, t_stack **b, int pos, int list_size);
-void				push_group(t_stack **a, t_stack **b, int id);
+void				push_top(t_stack **a, t_stack **b, int pos, int id);
+void				push_bot(t_stack **a, t_stack **b, int pos, int list_size, int id);
+void				push_group(t_stack **a, t_stack **b,int id);
 int					find_max_pos(t_stack *a);
 void				push_max(t_stack **a, t_stack **b, int max);
-void				sort_big(t_stack **stack_a, t_stack **stack_b, int size,
-						int id);
+void				sort_big(t_stack **stack_a, t_stack **stack_b, int size);
 void 				push_ordered(t_stack **b, int min);
 void				is_newmin(t_stack *a, int order, int group);
 int					is_ordered(t_stack *a);

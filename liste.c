@@ -26,6 +26,21 @@ void	display_list(t_stack *start)
 	}
 }
 
+void	display_group(t_stack *start)
+{
+	t_stack	*i;
+
+	i = start;
+	printf("group is :");
+	while (i != NULL)
+	{
+		printf(" %d", i->group);
+		i = i->next;
+		if (i == NULL)
+			printf("\n");
+	}
+}
+
 void	release(t_stack *start)
 {
 	t_stack	*i;

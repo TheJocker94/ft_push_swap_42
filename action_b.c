@@ -25,7 +25,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*temp1;
 
 	temp1 = *stack_a;
-	addtop(stack_b, (*stack_a)->val);
+	addtop(stack_b, (*stack_a)->val, (*stack_a)->group);
 	*stack_a = temp1->next;
 	free(temp1);
 	write(1, "pb\n", 3);

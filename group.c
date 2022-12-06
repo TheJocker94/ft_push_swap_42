@@ -1,6 +1,6 @@
 #include "lib/push_swap.h"
 
-int	is_group(t_stack *a, int min, int max, int id)
+int	is_group(t_stack *a, int id)
 {
 	t_stack	*node;
 	int		i;
@@ -9,10 +9,10 @@ int	is_group(t_stack *a, int min, int max, int id)
 	i = 0;
 	while (node)
 	{
-		if (node->val >= min && node->val <= max)
+		if (node->group == id)
 		{
-			node->group = id;
-			i = 1;
+				i = 1;
+				break;
 		}
 		node = node->next;
 	}
@@ -28,7 +28,7 @@ int	pos_group_top(t_stack *a, int id)
 	i = 1;
 	while (a && i <= (size / 2 + 1))
 	{
-		if (a->group == id)
+		if (((a->group == id) || (a->group == (id + 1))))
 			return (i);
 		a = a->next;
 		i++;
@@ -40,19 +40,19 @@ int	pos_group_bot(t_stack *a, int id)
 {
 	int	i;
 	int	size;
-	int	chunk;
+	int	pos;
 
 	size = lst_size(a);
-	chunk = 0;
+	pos = 0;
 	i = 0;
 	while (a)
 	{
-		if (a->group == id && i >= size / 2)
-			chunk = i + 1;
+		if (((a->group == id) || (a->group == (id + 1))) && i >= size / 2)
+			pos = i + 1;
 		i++;
 		a = a->next;
 	}
-	return (chunk);
+	return (pos);
 }
 
 void	push_group(t_stack **a, t_stack **b, int id)
@@ -62,18 +62,25 @@ void	push_group(t_stack **a, t_stack **b, int id)
 	int	list_size;
 	int	act_top;
 	int	act_bot;
+	//int	id;
 
+	//id = 1;
 	pos_top = pos_group_top(*a, id);
 	pos_bot = pos_group_bot(*a, id);
 	list_size = lst_size(*a);
 	act_top = pos_top - 1;
 	act_bot = list_size - pos_bot + 1;
+
+	//if (!is_group(*a, id) && !is_group(*a, id))
+	//	id += 2;
 	if ((pos_top - pos_bot == 0 || pos_bot == 0) && pos_top != 0)
-		push_top(a, b, pos_top);
+		push_top(a, b, pos_top, id);
 	else if ((act_top <= act_bot) && (act_top >= 0))
-		push_top(a, b, pos_top);
+		push_top(a, b, pos_top, id);
 	else if ((act_top > act_bot) || (pos_top == 0 && pos_bot != 0))
-		push_bot(a, b, pos_bot, list_size);
-	//if (((*b)->next != NULL) && ((*b)->val > (*b)->next->val))
-	//	sw_b(b);
+		push_bot(a, b, pos_bot, list_size, id);
+	if (((*b)->next != NULL) && ((*b)->group >= (lst_last(*b))->group))
+		rot_b(b);
+	//else
+	//	return ;
 }

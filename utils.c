@@ -12,39 +12,39 @@ int	find_inter(t_stack *a)
 	return (interv);
 }
 
-void	push_top(t_stack **a, t_stack **b, int pos)
+void	push_top(t_stack **a, t_stack **b, int pos, int id)
 {
 	int	i;
-	int min;
-	int size;
-
-	size = lst_size(*b);
+	//int min;
+	//int size;
+	id++;
+	//size = lst_size(*b);
 	i = 1;
-	min = find_min_pos(*b);
+	//min = find_min_pos(*b);
 	while (i != pos)
 	{
 		rot_a(a);
 		i++;
 	}
-	if (min < size && (*a)->val > min)
-		push_ordered(b, min);
+//	if (min < size && (*a)->val > min)
+//		push_ordered(b, min);
 	push_b(a, b);
 }
 
-void	push_bot(t_stack **a, t_stack **b, int pos, int list_size)
+void	push_bot(t_stack **a, t_stack **b, int pos, int list_size, int id)
 {
-	int min;
+	//int min;
 	//int size;
-
+	id++;
 	//size = lst_size(*b);
-	min = find_min_pos(*b);
+	//min = find_min_pos(*b);
 	while ((float)pos <= (float)(list_size))
 	{
 		rr_a(a);
 		pos++;
 	}
-	if (min < list_size && (*a)->val > min)
-		push_ordered(b, min);
+//	if (min < list_size && (*a)->val > min)
+//		push_ordered(b, min);
 	push_b(a, b);
 }
 // Pusha min in b giu

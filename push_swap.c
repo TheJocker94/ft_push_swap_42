@@ -17,9 +17,7 @@ int	main(int ac, char **av)
 	int		size;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		id;
 
-	id = 1;
 	size = ac - 1;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -31,17 +29,19 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	stack_a = create_list(ac, av);
+	groupon(&stack_a, size);
 	//printf("List size : %d\n", lst_size(stack_a));
 	//display_list(stack_a);
 	//printf("Min is : %d\n", is_min(stack_a));
 	//printf("Max is : %d\n", is_max(stack_a));
 	//printf("Min position is :%d\n", find_min_pos(stack_a));
-	//if (is_ordered(stack_a))
+	//if (is_ordered(stack_a));
 	//	return (0);
+	display_group(stack_a);
 	if (size <= 5)
 		ft_sort_5(&stack_a, &stack_b, size);
 	if (size > 5)
-		sort_big(&stack_a, &stack_b, size, id);
+		sort_big(&stack_a, &stack_b, size);
 	//int min;
 	//printf("Min pos is : %d\n", min = find_min_pos(stack_a));
 	//push_ordered(&stack_a, min);
@@ -58,6 +58,7 @@ int	main(int ac, char **av)
 	//write(1, "B:\n", 3);
 	//display_list(stack_b);
 	//printf("Max b is %d\n", j);
+	display_group(stack_a);
 	release(stack_a);
 	release(stack_b);
 }
