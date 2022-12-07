@@ -27,6 +27,7 @@ int	is_min_group(t_stack *a, int div)
 	t_stack	*node;
 	t_stack	*temp;
 
+	min = 0;
 	node = a;
 	temp = node->next;
 	while (temp)

@@ -10,14 +10,14 @@ void	sort_logic(t_stack ***stack_a, t_stack ***stack_b, int size)
 	//if (size > 100)
 		//div = (size / 62.5) + 5;
 	while (i < size)
+	{
+		while (is_group(**stack_a, id) || is_group(**stack_a, id + 1))
 		{
-			while (is_group(**stack_a, id) || is_group(**stack_a, id + 1))
-			{
-				push_group(*stack_a, *stack_b, id);
-				i++;
-			}
-			id += 2; 
+			push_group(*stack_a, *stack_b, id);
+			i++;
 		}
+		id += 2; 
+	}
 }
 
 void	sort_big(t_stack **stack_a, t_stack **stack_b, int size)

@@ -17,8 +17,10 @@ int	main(int ac, char **av)
 	int		size;
 	t_stack	*stack_a;
 	t_stack	*stack_b;
+	int		div;
 
 	size = ac - 1;
+	div = divinizer(size);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (size < 1)
@@ -29,7 +31,7 @@ int	main(int ac, char **av)
 		exit (0);
 	}
 	stack_a = create_list(ac, av);
-	groupon(&stack_a, size);
+	groupon(&stack_a, size, div);
 	//printf("List size : %d\n", lst_size(stack_a));
 	//display_list(stack_a);
 	//printf("Min is : %d\n", is_min(stack_a));

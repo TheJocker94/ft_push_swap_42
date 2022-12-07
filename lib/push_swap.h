@@ -72,6 +72,8 @@ void 				push_ordered(t_stack **b, int min);
 void				is_newmin(t_stack *a, int order, int group);
 int					is_ordered(t_stack *a);
 void				init_min(t_stack *a);
-void				groupon(t_stack **a, int size);
+void				groupon(t_stack **a, int size, int div);
+int					divinizer(int size);
+
 
 #endif

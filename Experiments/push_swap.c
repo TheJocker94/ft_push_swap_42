@@ -20,9 +20,9 @@ int	main(int ac, char **av)
 	int		div;
 
 	size = ac - 1;
-	div = 5;
-	if (size > 100)
-		div = (size / 62.5) + 9;
+	div = 30;
+	//if (size > 100)
+	//	div = (size / 62.5) + 15;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (size < 1)

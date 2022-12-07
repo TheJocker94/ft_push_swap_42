@@ -62,25 +62,22 @@ void	push_group(t_stack **a, t_stack **b, int id)
 	int	list_size;
 	int	act_top;
 	int	act_bot;
-	//int	id;
 
-	//id = 1;
 	pos_top = pos_group_top(*a, id);
 	pos_bot = pos_group_bot(*a, id);
 	list_size = lst_size(*a);
 	act_top = pos_top - 1;
 	act_bot = list_size - pos_bot + 1;
 
-	//if (!is_group(*a, id) && !is_group(*a, id))
-	//	id += 2;
 	if ((pos_top - pos_bot == 0 || pos_bot == 0) && pos_top != 0)
 		push_top(a, b, pos_top, id);
 	else if ((act_top <= act_bot) && (act_top >= 0))
 		push_top(a, b, pos_top, id);
 	else if ((act_top > act_bot) || (pos_top == 0 && pos_bot != 0))
 		push_bot(a, b, pos_bot, list_size, id);
-	if (((*b)->next != NULL) && ((*b)->group >= (lst_last(*b))->group))
+	if (((*b)->next != NULL) && ((*b)->group < (lst_last(*b))->group))
+		return ;
+	else
 		rot_b(b);
-	//else
-	//	return ;
 }
+

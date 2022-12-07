@@ -46,7 +46,7 @@ void	is_newmin(t_stack *a, int order, int group)
 	if (node->group == 0)
 		node->group = group;
 	//if (node->order == 0)
-		node->order = order;
+	node->order = order;
 	return ;
 }
 

@@ -1,5 +1,21 @@
 #include "lib/push_swap.h"
 
+int	divinizer(int size)
+{
+	int div;
+
+	div = 5;
+	if (size > 5 && size <= 10)
+		div = 2;
+	else if (size > 10 && size <= 100)
+		div = 7;
+	else if (size > 100 && size <= 500)
+		div = (size / 62.5) + 10;
+	else
+		div = (size / 62.5) + 11;
+	return (div);
+}
+
 void	init_min(t_stack *a)
 {
 	t_stack	*node;
@@ -50,10 +66,10 @@ void	is_newmin(t_stack *a, int order, int group)
 	return ;
 }
 
-void	groupon(t_stack **a, int size)
+void	groupon(t_stack **a, int size, int div)
 {
 	int		i;
-	int		div;
+	//int		div;
 	int		g_size;
 	int		group;
 	int		order;
@@ -62,10 +78,10 @@ void	groupon(t_stack **a, int size)
 	order = 2;
 	group = 1;
 	i = 1;
-	div = 7;
+	//div = 7;
 	init_min(*a);
-	if (size > 100)
-		div = (size / 62.5) + 10;
+	//if (size > 100)
+	//	div = (size / 62.5) + 10;
 	g_size = size / div;
 	j = size % div;
 	if (j > 0)

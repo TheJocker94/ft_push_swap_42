@@ -4,23 +4,14 @@ void	sort_logic(t_stack ***stack_a, t_stack ***stack_b, int size, int div)
 {
 	size++;
 	//int		div;
+	div++;
 	int id = 1;
-	int i = 0;
-	//div = 5;
-	//if (size > 100)
-		//div = (size / 62.5) + 5;
-	//while (i < size)
-	//	{
-			while (div != 0)
-			{
-				push_group(*stack_a, *stack_b, id);
-				i++;
-				if (!is_group(**stack_a, id) || !is_group(**stack_a, id + 1))
-					{
-						div--;
-						id++;
-					}
-			}
+	while (size--)
+	{
+		while (is_group(**stack_a, id) || is_group(**stack_a, id + 1))
+			push_group(*stack_a, *stack_b, id);
+		id += 2; 
+	}
 	//		id += 2; 
 	//	}
 }
@@ -36,7 +27,7 @@ void	sort_big(t_stack **stack_a, t_stack **stack_b, int size, int div)
 	sort_logic(&stack_a, &stack_b, size, div);
 	//while (*stack_b)
 	//{
-	while (div != -1)
+	while (*stack_b)
 	{
 		min = is_min_group(*stack_b, div);
 		max = is_max(*stack_b);
@@ -44,15 +35,17 @@ void	sort_big(t_stack **stack_a, t_stack **stack_b, int size, int div)
 		i += push_max_min(stack_a, stack_b, j, min, max);
 		if (!is_group(*stack_b, div))
 		{
-			while (i>0)
+			while (i--)
 				{
 					rr_a(stack_a);
-					i--;
+					//i--;
 				}
 			div--;
+			i = 0;
 		}
-		if (stack_b == NULL)
-			break ;
+		//if (stack_b == NULL)
+		//	break ;
+		//i = 0;
 	}
 	//div--;
 	//i = 0;
