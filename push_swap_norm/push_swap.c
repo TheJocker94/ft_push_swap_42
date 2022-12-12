@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 	if (size <= 5)
 		ft_sort_5(&stack_a, &stack_b, size);
 	if (size > 5)
-		sort_big(&stack_a, &stack_b, size, div);
+		sort_big(&stack_a, &stack_b, div);
 	release(stack_a);
 	release(stack_b);
 }

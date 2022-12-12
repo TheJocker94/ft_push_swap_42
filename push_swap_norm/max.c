@@ -70,12 +70,12 @@ void	push_max(t_stack **a, t_stack **b, int max)
 	int	i;
 
 	i = 1;
-	list_size = lst_size(*b);
+	list_size = lst_size(*a);
 	if ((float)max <= (float)(list_size / 2 + 1))
 	{
 		while (i != max)
 		{
-			rot_b(b);
+			rot_a(a);
 			i++;
 		}
 	}
@@ -83,9 +83,9 @@ void	push_max(t_stack **a, t_stack **b, int max)
 	{
 		while ((float)max <= (float)(list_size))
 		{
-			rr_b(b);
+			rr_a(a);
 			max++;
 		}
 	}
-	push_a(a, b);
+	push_b(a, b);
 }

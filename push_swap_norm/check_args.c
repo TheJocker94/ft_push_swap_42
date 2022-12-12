@@ -66,7 +66,7 @@ int	check_double(int i, int j, int ac, char **av)
 	{
 		while (j < ac)
 		{
-			if (ft_strncmp(av[i], av[j], 20) == 0)
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
 				return (1);
 			j++;
 		}

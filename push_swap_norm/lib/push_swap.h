@@ -39,8 +39,10 @@ void				rot_a(t_stack **stack_a);
 void				rot_base(t_stack **stack_a);
 void				rr_a(t_stack **stack_a);
 void				rot_b(t_stack **stack_a);
+void				rr(t_stack **a, t_stack **b);
 void				rr_base(t_stack **stack_a);
 void				rr_b(t_stack **stack_a);
+void				rrr(t_stack **a, t_stack **b);
 int					medium_val(t_stack *list);
 long				ft_atol(char *str);
 int					ft_strdigit(char *str);
@@ -52,8 +54,7 @@ void				ft_sort_2(t_stack **a);
 void				ft_sort_3(t_stack **a);
 void				first_sort_3_if(t_stack *tmp, t_stack *tmp2, t_stack *tmp3,
 						t_stack **a);
-void				sort_logic(t_stack ***stack_a, t_stack ***stack_b,
-						int size);
+void				sort_logic(t_stack ***stack_a, t_stack ***stack_b, int div);
 void				ft_sort_5(t_stack **a, t_stack **b, int size);
 int					is_min(t_stack *a);
 int					is_max(t_stack *a);
@@ -68,8 +69,7 @@ void				push_bot(t_stack **a, t_stack **b, int pos, int list_size);
 void				push_group(t_stack **a, t_stack **b, int id);
 int					find_max_pos(t_stack *a);
 void				push_max(t_stack **a, t_stack **b, int max);
-void				sort_big(t_stack **stack_a, t_stack **stack_b, int size,
-						int div);
+void				sort_big(t_stack **stack_a, t_stack **stack_b, int div);
 void				push_ordered(t_stack **b, int min);
 void				is_newmin(t_stack *a, int order, int group);
 int					is_ordered(t_stack *a);
@@ -80,5 +80,6 @@ int					find_max_min_pos(t_stack *a, int div);
 int					is_max_group(t_stack *a, int div);
 void				display_order(t_stack *start);
 int					push_group_back(t_stack **a, t_stack **b, int min, int max);
+int					is_next_top(t_stack **a, int id);
 
 #endif
