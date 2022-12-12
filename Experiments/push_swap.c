@@ -20,7 +20,7 @@ int	main(int ac, char **av)
 	int		div;
 
 	size = ac - 1;
-	div = 30;
+	div = 15;
 	//if (size > 100)
 	//	div = (size / 62.5) + 15;
 	stack_a = NULL;

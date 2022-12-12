@@ -79,8 +79,8 @@ void	push_group(t_stack **a, t_stack **b, int id)
 		push_top(a, b, pos_top);
 	else if ((act_top > act_bot) || (pos_top == 0 && pos_bot != 0))
 		push_bot(a, b, pos_bot, list_size);
-	if (((*b)->next != NULL) && ((*b)->group <= lst_last(*b)->group))
+	if (((*b)->next != NULL) && ((*b)->group >= lst_last(*b)->group))
 		rot_b(b);
-	//else
-	//	return ;
+	else
+		return ;
 }

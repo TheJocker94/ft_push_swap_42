@@ -78,5 +78,6 @@ int					find_max_min_pos(t_stack *a, int div);
 int				push_max_min(t_stack **a, t_stack **b, int pos, int min, int max);
 int	is_max_group(t_stack *a, int div);
 void	display_order(t_stack *start);
+int	push_group_ret(t_stack **a, t_stack **b, int min, int max);
 
 #endif
