@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   max_min.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocastell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 15:41:36 by ocastell          #+#    #+#             */
+/*   Updated: 2022/12/12 15:41:39 by ocastell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lib/push_swap.h"
 
 int	pos_max_min_top(t_stack *a, int min, int max)
@@ -92,6 +104,7 @@ int	push_group_back(t_stack **a, t_stack **b, int min, int max)
 	int	act_bot;
 	int	i;
 
+	i = 0;
 	list_size = lst_size(*b);
 	act_top = pos_max_min_top(*b, min, max) - 1;
 	act_bot = list_size - pos_max_min_bot(*b, min, max) + 1;
