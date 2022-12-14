@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   min.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocastell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 15:41:28 by ocastell          #+#    #+#             */
+/*   Updated: 2022/12/12 15:41:30 by ocastell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lib/push_swap.h"
 
 int	is_min(t_stack *a)
@@ -12,6 +24,35 @@ int	is_min(t_stack *a)
 	{
 		while ((temp) && (node->val < temp->val))
 			temp = temp->next;
+		if (temp != NULL)
+		{
+			node = temp;
+			temp = temp->next;
+		}
+	}
+	min = node->val;
+	return (min);
+}
+
+int	is_min_group(t_stack *a, int div)
+{
+	int		min;
+	t_stack	*node;
+	t_stack	*temp;
+
+	min = 0;
+	node = a;
+	temp = node->next;
+	while (temp)
+	{
+		while (((temp) && (node->val < temp->val)) || temp->group != div)
+		{
+			if (node->group != div)
+				break ;
+			temp = temp->next;
+			if (temp == NULL)
+				break ;
+		}
 		if (temp != NULL)
 		{
 			node = temp;
@@ -55,7 +96,7 @@ void	push_min(t_stack **a, t_stack **b)
 	{
 		while (i != pos_min)
 		{
-			rot_a(a);
+			rot_a(a, 1);
 			i++;
 		}
 	}
@@ -63,9 +104,9 @@ void	push_min(t_stack **a, t_stack **b)
 	{
 		while ((float)pos_min <= (float)(list_size))
 		{
-			rr_a(a);
+			rr_a(a, 1);
 			pos_min++;
 		}
 	}
-	push_b(a, b);
+	push_b(a, b, 1);
 }

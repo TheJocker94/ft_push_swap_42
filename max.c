@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   max.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocastell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 15:42:19 by ocastell          #+#    #+#             */
+/*   Updated: 2022/12/12 15:42:22 by ocastell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lib/push_swap.h"
 
 int	is_max(t_stack *a)
@@ -11,6 +23,28 @@ int	is_max(t_stack *a)
 	while (temp)
 	{
 		while ((temp) && (node->val > temp->val))
+			temp = temp->next;
+		if (temp != NULL)
+		{
+			node = temp;
+			temp = temp->next;
+		}
+	}
+	max = node->val;
+	return (max);
+}
+
+int	is_max_group(t_stack *a, int div)
+{
+	int		max;
+	t_stack	*node;
+	t_stack	*temp;
+
+	node = a;
+	temp = node->next;
+	while (temp)
+	{
+		while ((temp) && (node->val > temp->val) && node->group == div)
 			temp = temp->next;
 		if (temp != NULL)
 		{
@@ -48,12 +82,12 @@ void	push_max(t_stack **a, t_stack **b, int max)
 	int	i;
 
 	i = 1;
-	list_size = lst_size(*b);
+	list_size = lst_size(*a);
 	if ((float)max <= (float)(list_size / 2 + 1))
 	{
 		while (i != max)
 		{
-			rot_b(b);
+			rot_a(a, 1);
 			i++;
 		}
 	}
@@ -61,9 +95,9 @@ void	push_max(t_stack **a, t_stack **b, int max)
 	{
 		while ((float)max <= (float)(list_size))
 		{
-			rr_b(b);
+			rr_a(a, 1);
 			max++;
 		}
 	}
-	push_a(a, b);
+	push_b(a, b, 1);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocastell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/14 12:04:51 by ocastell          #+#    #+#             */
+/*   Updated: 2022/12/14 12:52:13 by ocastell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lib/push_swap.h"
 
 void	ft_display_exit(void)
@@ -40,11 +52,12 @@ void	ft_exec_sort(t_stack **a, t_stack **b, char *str)
 			rot_b(b, 0);
 		else
 			exec_check(a, b, str);
+		free(str);
 		str = get_next_line(0);
 	}
 }
 
-void	ft_check_sort(t_stack *stack_a)
+void	ft_check_sort(t_stack *stack_a, t_stack *stack_b)
 {
 	while (stack_a->next != NULL)
 	{
@@ -55,7 +68,10 @@ void	ft_check_sort(t_stack *stack_a)
 		}
 		stack_a = stack_a->next;
 	}
-	write(1, "OK\n", 3);
+	if (stack_b != NULL)
+		write(1, "KO\n", 3);
+	else
+		write(1, "OK\n", 3);
 	return ;
 }
 
@@ -77,8 +93,7 @@ int	main(int ac, char **av)
 	stack_a = create_list(ac, av);
 	str = get_next_line(0);
 	ft_exec_sort(&stack_a, &stack_b, str);
-	ft_check_sort(stack_a);
-	free(str);
+	ft_check_sort(stack_a, stack_b);
 	release(stack_a);
 	release(stack_b);
 	return (0);

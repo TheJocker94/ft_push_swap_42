@@ -6,7 +6,7 @@
 /*   By: ocastell <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 21:34:40 by ocastell          #+#    #+#             */
-/*   Updated: 2022/12/01 21:34:42 by ocastell         ###   ########.fr       */
+/*   Updated: 2022/12/14 12:43:01 by ocastell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	check_double(int i, int j, int ac, char **av)
 	{
 		while (j < ac)
 		{
-			if (ft_strncmp(av[i], av[j], 20) == 0)
+			if (ft_atoi(av[i]) == ft_atoi(av[j]))
 				return (1);
 			j++;
 		}
@@ -83,18 +83,15 @@ int	check_args(int ac, char **av)
 
 	i = 1;
 	j = 2;
-	while (1)
-	{
-		if (check_double(i, j, ac, av) == 1)
-			return (1);
-		else if (check_double(i, j, ac, av) == 0)
-			break ;
-	}
+	if (check_double(i, j, ac, av) == 1)
+		return (1);
 	i = 1;
 	while (i < ac)
 	{
 		if ((av[i][0] != '-' && av[i][0] != '+') && (av[i][0] < '0'
 				|| av[i][0] > '9'))
+			return (1);
+		else if ((av[i][0] == '-' || av[i][0] == '+') && !ft_isdigit(av[i][1]))
 			return (1);
 		else if (!ft_strdigit(av[i]))
 			return (1);

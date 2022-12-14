@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ocastell <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/12 15:41:16 by ocastell          #+#    #+#             */
+/*   Updated: 2022/12/12 15:41:18 by ocastell         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lib/push_swap.h"
 
 int	find_inter(t_stack *a)
@@ -12,95 +24,32 @@ int	find_inter(t_stack *a)
 	return (interv);
 }
 
-void	push_top(t_stack **a, t_stack **b, int pos, int id)
+void	push_top(t_stack **a, t_stack **b, int pos)
 {
 	int	i;
-	//int min;
-	//int size;
-	id++;
-	//size = lst_size(*b);
+
 	i = 1;
-	//min = find_min_pos(*b);
 	while (i != pos)
 	{
-		rot_a(a);
+		rot_a(a, 1);
 		i++;
 	}
-//	if (min < size && (*a)->val > min)
-//		push_ordered(b, min);
-	push_b(a, b);
+	push_b(a, b, 1);
 }
 
-void	push_bot(t_stack **a, t_stack **b, int pos, int list_size, int id)
+void	push_bot(t_stack **a, t_stack **b, int pos, int list_size)
 {
-	//int min;
-	//int size;
-	id++;
-	//size = lst_size(*b);
-	//min = find_min_pos(*b);
 	while ((float)pos <= (float)(list_size))
 	{
-		rr_a(a);
+		rr_a(a, 1);
 		pos++;
 	}
-//	if (min < list_size && (*a)->val > min)
-//		push_ordered(b, min);
-	push_b(a, b);
+	push_b(a, b, 1);
 }
-// Pusha min in b giu
-void push_ordered(t_stack **b, int min)
-{
-	int	list_size;
-	//int	i;
-
-	//i = 1;
-	list_size = lst_size(*b);
-	if ((float)min >= (float)(list_size / 2))
-	{
-		while (min != list_size)
-		{
-			rr_b(b);
-			min++;
-		}
-	}
-	else if ((float)min < (float)(list_size / 2))
-	{
-		while ((float)min >= 1)
-		{
-			rot_b(b);
-			min--;
-		}
-	}
-}
-//Pusha min su
-/*void push_ordered(t_stack **b, int min)
-{
-	int	list_size;
-	int	i;
-
-	i = 1;
-	list_size = lst_size(*b);
-	if ((float)min <= (float)(list_size / 2 + 1))
-	{
-		while (i != min)
-		{
-			rot_b(b);
-			i++;
-		}
-	}
-	else if ((float)min > (float)(list_size / 2))
-	{
-		while ((float)min <= (float)(list_size))
-		{
-			rr_b(b);
-			min++;
-		}
-	}
-}*/
 
 int	is_ordered(t_stack *a)
 {
-	while(a->next != NULL)
+	while (a->next != NULL)
 	{
 		if (a->val > a->next->val)
 			return (0);
