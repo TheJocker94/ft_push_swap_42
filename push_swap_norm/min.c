@@ -96,7 +96,7 @@ void	push_min(t_stack **a, t_stack **b)
 	{
 		while (i != pos_min)
 		{
-			rot_a(a);
+			rot_a(a, 1);
 			i++;
 		}
 	}
@@ -104,9 +104,9 @@ void	push_min(t_stack **a, t_stack **b)
 	{
 		while ((float)pos_min <= (float)(list_size))
 		{
-			rr_a(a);
+			rr_a(a, 1);
 			pos_min++;
 		}
 	}
-	push_b(a, b);
+	push_b(a, b, 1);
 }

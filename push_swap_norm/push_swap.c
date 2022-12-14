@@ -20,16 +20,13 @@ int	main(int ac, char **av)
 	int		div;
 
 	size = ac - 1;
-	div = 15;
+	div = divine(size);
 	stack_a = NULL;
 	stack_b = NULL;
 	if (size < 1)
-		exit (0);
+		return (0);
 	if (check_args(ac, av))
-	{
-		write(2, "Error\n", 6);
-		exit (0);
-	}
+		ft_display_exit();
 	stack_a = create_list(ac, av);
 	init_min(stack_a);
 	groupon(&stack_a, size, div);
@@ -39,4 +36,5 @@ int	main(int ac, char **av)
 		sort_big(&stack_a, &stack_b, div);
 	release(stack_a);
 	release(stack_b);
+	return (0);
 }

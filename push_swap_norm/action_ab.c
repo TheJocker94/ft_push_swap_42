@@ -12,11 +12,12 @@
 
 #include "lib/push_swap.h"
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, int j)
 {
-	rot_a(a);
-	rot_b(b);
-	write(1, "rr\n", 3);
+	rot_base(a);
+	rot_base(b);
+	if (j == 1)
+		write(1, "rr\n", 3);
 }
 
 void	rr_base(t_stack **stack_a)
@@ -53,9 +54,18 @@ void	rot_base(t_stack **stack_a)
 	*stack_a = new_head;
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, int j)
 {
-	rr_a(a);
-	rr_b(b);
-	write(1, "rrr\n", 4);
+	rr_base(a);
+	rr_base(b);
+	if (j == 1)
+		write(1, "rrr\n", 4);
+}
+
+void	ss(t_stack **a, t_stack **b, int j)
+{
+	sw_a(a, 0);
+	sw_b(b, 0);
+	if (j == 1)
+		write(1, "ss\n", 3);
 }

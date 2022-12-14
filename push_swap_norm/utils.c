@@ -31,20 +31,20 @@ void	push_top(t_stack **a, t_stack **b, int pos)
 	i = 1;
 	while (i != pos)
 	{
-		rot_a(a);
+		rot_a(a, 1);
 		i++;
 	}
-	push_b(a, b);
+	push_b(a, b, 1);
 }
 
 void	push_bot(t_stack **a, t_stack **b, int pos, int list_size)
 {
 	while ((float)pos <= (float)(list_size))
 	{
-		rr_a(a);
+		rr_a(a, 1);
 		pos++;
 	}
-	push_b(a, b);
+	push_b(a, b, 1);
 }
 
 int	is_ordered(t_stack *a)

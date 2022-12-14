@@ -20,7 +20,7 @@ void	ft_sort_2(t_stack **a)
 	beholder = *a;
 	beholder2 = beholder->next;
 	if (beholder->val > beholder2->val)
-		sw_a(a);
+		sw_a(a, 1);
 }
 
 void	first_sort_3_if(t_stack *tmp, t_stack *tmp2, t_stack *tmp3, t_stack **a)
@@ -28,11 +28,11 @@ void	first_sort_3_if(t_stack *tmp, t_stack *tmp2, t_stack *tmp3, t_stack **a)
 	if (tmp2->val < tmp3->val)
 		return ;
 	else if (tmp3->val < tmp->val)
-		rr_a(a);
+		rr_a(a, 1);
 	else
 	{
-		rr_a(a);
-		sw_a(a);
+		rr_a(a, 1);
+		sw_a(a, 1);
 	}
 }
 
@@ -50,14 +50,14 @@ void	ft_sort_3(t_stack **a)
 	else if (tmp2->val < tmp3->val)
 	{
 		if (tmp3->val < tmp->val)
-			rot_a(a);
+			rot_a(a, 1);
 		else
-			sw_a(a);
+			sw_a(a, 1);
 	}
 	else
 	{
-		sw_a(a);
-		rr_a(a);
+		sw_a(a, 1);
+		rr_a(a, 1);
 	}
 }
 
@@ -86,26 +86,26 @@ int	check_order_little(t_stack **list, int size)
 
 void	ft_sort_5(t_stack **a, t_stack **b, int size)
 {
+	if (is_ordered(*a))
+		return ;
 	if (size == 1)
 		return ;
 	if (size == 2)
 		ft_sort_2(a);
 	if (size == 3)
 		ft_sort_3(a);
-	if ((check_order_little(a, size)) && size >= 4)
-		return ;
 	if (size == 4)
 	{
 		push_min(a, b);
 		ft_sort_3(a);
-		push_a(a, b);
+		push_a(a, b, 1);
 	}
 	if (size == 5)
 	{
 		push_min(a, b);
 		push_min(a, b);
 		ft_sort_3(a);
-		push_a(a, b);
-		push_a(a, b);
+		push_a(a, b, 1);
+		push_a(a, b, 1);
 	}
 }

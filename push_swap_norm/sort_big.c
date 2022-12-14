@@ -16,20 +16,26 @@ void	sort_logic(t_stack ***stack_a, t_stack ***stack_b, int div)
 {
 	int	id;
 	int	min;
+	//int	max;
 
 	id = 1;
 	while (**stack_a)
 	{
-		while (is_group(**stack_a, id) || is_group(**stack_a, id + 1))
+		while ((is_group(**stack_a, id) || is_group(**stack_a, id + 1)))
 			push_group(*stack_a, *stack_b, id);
 		id += 2;
-		if (id == div || (id + 1) == div)
+		if ((!is_group(**stack_a, (div - 1))))
 			break ;
 	}
 	while (**stack_a)
 	{
+		//min = is_min(**stack_a);
+		//max = is_max(**stack_a);
 		min = find_min_pos(**stack_a);
 		push_max(*stack_a, *stack_b, min);
+		//push_group_2(*stack_a, *stack_b, min, max);
+		//if (**stack_a == NULL)
+		//return ;
 	}
 }
 
@@ -40,6 +46,8 @@ void	sort_big(t_stack **stack_a, t_stack **stack_b, int div)
 	int		i;
 
 	i = 0;
+	if (is_ordered(*stack_a))
+		return ;
 	sort_logic(&stack_a, &stack_b, div);
 	while (*stack_b)
 	{
@@ -49,7 +57,7 @@ void	sort_big(t_stack **stack_a, t_stack **stack_b, int div)
 		if (!is_group(*stack_b, div))
 		{
 			while (i--)
-				rr_a(stack_a);
+				rr_a(stack_a, 1);
 			div--;
 			i = 0;
 		}

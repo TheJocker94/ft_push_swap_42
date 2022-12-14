@@ -87,7 +87,7 @@ void	push_max(t_stack **a, t_stack **b, int max)
 	{
 		while (i != max)
 		{
-			rot_a(a);
+			rot_a(a, 1);
 			i++;
 		}
 	}
@@ -95,9 +95,9 @@ void	push_max(t_stack **a, t_stack **b, int max)
 	{
 		while ((float)max <= (float)(list_size))
 		{
-			rr_a(a);
+			rr_a(a, 1);
 			max++;
 		}
 	}
-	push_b(a, b);
+	push_b(a, b, 1);
 }

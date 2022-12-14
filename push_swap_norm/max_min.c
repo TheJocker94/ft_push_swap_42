@@ -55,19 +55,19 @@ int	push_top_back(t_stack **a, t_stack **b, int pos, int min)
 	i = 1;
 	while (i != pos)
 	{
-		rot_b(b);
+		rot_b(b, 1);
 		i++;
 	}
-	if ((*b)->val == min)
+	if ((*b)->val == min && (*b)->val != is_max(*b))
 	{
 		i = 1;
-		push_a(a, b);
-		rot_a(a);
+		push_a(a, b, 1);
+		rot_a(a, 1);
 	}
 	else
 	{
 		i = 0;
-		push_a(a, b);
+		push_a(a, b, 1);
 	}
 	return (i);
 }
@@ -80,19 +80,19 @@ int	push_bot_back(t_stack **a, t_stack **b, int pos, int min)
 	list_size = lst_size(*b);
 	while ((float)pos <= (float)(list_size))
 	{
-		rr_b(b);
+		rr_b(b, 1);
 		pos++;
 	}
-	if ((*b)->val == min)
+	if ((*b)->val == min && (*b)->val != is_max(*b))
 	{
 		i = 1;
-		push_a(a, b);
-		rot_a(a);
+		push_a(a, b, 1);
+		rot_a(a, 1);
 	}
 	else
 	{
 		i = 0;
-		push_a(a, b);
+		push_a(a, b, 1);
 	}
 	return (i);
 }

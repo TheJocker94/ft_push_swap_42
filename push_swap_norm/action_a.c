@@ -12,7 +12,7 @@
 
 #include "lib/push_swap.h"
 
-void	sw_a(t_stack **start)
+void	sw_a(t_stack **start, int j)
 {
 	t_stack	*head;
 	t_stack	*temp;
@@ -29,10 +29,11 @@ void	sw_a(t_stack **start)
 	head->next = next;
 	next->next = temp;
 	*start = head;
-	write(1, "sa\n", 3);
+	if (j == 1)
+		write(1, "sa\n", 3);
 }
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
+void	push_a(t_stack **stack_a, t_stack **stack_b, int j)
 {
 	t_stack	*temp1;
 
@@ -40,17 +41,20 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 	addtop(stack_a, (*stack_b)->val, (*stack_b)->group);
 	*stack_b = temp1->next;
 	free(temp1);
-	write(1, "pa\n", 3);
+	if (j == 1)
+		write(1, "pa\n", 3);
 }
 
-void	rot_a(t_stack **stack_a)
+void	rot_a(t_stack **stack_a, int j)
 {
 	rot_base(stack_a);
-	write(1, "ra\n", 3);
+	if (j == 1)
+		write(1, "ra\n", 3);
 }
 
-void	rr_a(t_stack **stack_a)
+void	rr_a(t_stack **stack_a, int j)
 {
 	rr_base(stack_a);
-	write(1, "rra\n", 4);
+	if (j == 1)
+		write(1, "rra\n", 4);
 }

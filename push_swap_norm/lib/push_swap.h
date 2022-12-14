@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libft.h"
+# include "../src/libft.h"
 
 typedef struct t_stack
 {
@@ -30,19 +30,20 @@ void				addtop(t_stack **start, int new, int group);
 void				addbot(t_stack **start, int new);
 int					lst_size(t_stack *start);
 t_stack				*create_list(int ac, char **av);
-void				sw_a(t_stack **start);
-void				sw_b(t_stack **start);
-void				push_b(t_stack **stack_a, t_stack **stack_b);
-void				push_a(t_stack **stack_a, t_stack **stack_b);
+void				sw_a(t_stack **start, int j);
+void				sw_b(t_stack **start, int j);
+void				ss(t_stack **a, t_stack **b, int j);
+void				push_b(t_stack **stack_a, t_stack **stack_b, int j);
+void				push_a(t_stack **stack_a, t_stack **stack_b, int j);
 t_stack				*lst_last(t_stack *start);
-void				rot_a(t_stack **stack_a);
+void				rot_a(t_stack **stack_a, int j);
 void				rot_base(t_stack **stack_a);
-void				rr_a(t_stack **stack_a);
-void				rot_b(t_stack **stack_a);
-void				rr(t_stack **a, t_stack **b);
+void				rr_a(t_stack **stack_a, int j);
+void				rot_b(t_stack **stack_a, int j);
+void				rr(t_stack **a, t_stack **b, int j);
 void				rr_base(t_stack **stack_a);
-void				rr_b(t_stack **stack_a);
-void				rrr(t_stack **a, t_stack **b);
+void				rr_b(t_stack **stack_a, int j);
+void				rrr(t_stack **a, t_stack **b, int j);
 int					medium_val(t_stack *list);
 long				ft_atol(char *str);
 int					ft_strdigit(char *str);
@@ -81,5 +82,11 @@ int					is_max_group(t_stack *a, int div);
 void				display_order(t_stack *start);
 int					push_group_back(t_stack **a, t_stack **b, int min, int max);
 int					is_next_top(t_stack **a, int id);
-
+void				push_group_2(t_stack **a, t_stack **b, int min, int max);
+void				push_bot_last(t_stack **a, t_stack **b, int pos, int max);
+void				push_top_last(t_stack **a, t_stack **b, int pos, int max);
+int					pos_max_min_top(t_stack *a, int min, int max);
+int					pos_max_min_bot(t_stack *a, int min, int max);
+int					divine(int size);
+void				ft_display_exit(void);
 #endif
